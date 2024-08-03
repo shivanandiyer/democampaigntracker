@@ -78,7 +78,7 @@ def generate_dummy_data():
 user_data, query_data, grievance_data = generate_dummy_data()
 
 # Dashboard title
-st.title("Ryde Council AI Chatbot - Campaign Performance Tracker")
+st.title("Chatbot Campaign Performance Tracker")
 
 # Create tabs
 tab1, tab2 = st.tabs(["User Engagement", "Grievance Tracking"])
