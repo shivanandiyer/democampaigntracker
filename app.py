@@ -6,9 +6,9 @@ import datetime
 from PIL import Image
 
 # Set page config
-st.set_page_config(layout="wide", page_title="Ryde Council Chatbot - User Engagement Metrics")
+st.set_page_config(layout="wide", page_title="Chatbot User Engagement Analytics")
 
-
+# Load and display Ryde Council NSW logo
 logo = Image.open("assets/ryde_council_logo.png")
 st.image(logo, width=200)
 
@@ -76,7 +76,7 @@ def generate_dummy_data():
 user_data, query_data, grievance_data = generate_dummy_data()
 
 # Dashboard title
-st.title("Ryde Council Chatbot - User Engagement Metrics")
+st.title("Chatbot User Engagement Analytics")
 
 # Create tabs
 tab1, tab2 = st.tabs(["User Engagement", "Grievance Tracking"])
@@ -99,7 +99,7 @@ with tab1:
     st.markdown("---")
 
     # Query Distribution
-    st.subheader("Query Distribution and Top FAQs")
+    st.subheader("Query Distribution and Top FAQs by Chatbot Users")
     col1, col2 = st.columns(2)
 
     with col1:
@@ -112,20 +112,24 @@ with tab1:
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.write("Top 10 FAQs")
-        top_faqs = query_data['question'].value_counts().head(10)
-        col1, col2 = st.columns(2)
-        for i, (q, count) in enumerate(top_faqs.items(), 1):
-            if i <= 5:
-                with col1:
-                    st.write(f"{i}. {q}")
-                    st.write(f"   *Asked {count} times*")
-                    st.write("")
-            else:
-                with col2:
-                    st.write(f"{i}. {q}")
-                    st.write(f"   *Asked {count} times*")
-                    st.write("")
+        st.markdown("<h3 style='text-align: center;'><b>Top 10 FAQs</b></h3>", unsafe_allow_html=True)
+        top_faqs = query_data['question'].value_counts().head(10).reset_index()
+        top_faqs.columns = ['Query', '# of times asked']
+        
+        # Create a custom HTML table with alternating row colors and right-aligned "# of times asked"
+        html_table = "<table style='width:100%; border-collapse: collapse;'>"
+        html_table += "<tr><th style='text-align: left; padding: 8px;'>Query</th><th style='text-align: right; padding: 8px;'># of times asked</th></tr>"
+        
+        for i, (_, row) in enumerate(top_faqs.iterrows()):
+            bg_color = "#f0f2f6" if i % 2 == 0 else "white"
+            html_table += f"<tr style='background-color: {bg_color};'>"
+            html_table += f"<td style='text-align: left; padding: 8px;'>{row['Query']}</td>"
+            html_table += f"<td style='text-align: right; padding: 8px;'>{row['# of times asked']:,}</td>"
+            html_table += "</tr>"
+        
+        html_table += "</table>"
+        
+        st.markdown(html_table, unsafe_allow_html=True)
 
     st.markdown("---")
 
