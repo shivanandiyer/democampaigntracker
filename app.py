@@ -30,8 +30,8 @@ def generate_dummy_data():
     questions = [
         "How can I report illegal dumping in my neighborhood?",
         "What's the process for objecting to a development application?",
-        "When is the next community recycling event?",
-        "How do I apply for a resident parking permit?",
+        "Council's Future Vision",
+        "How do I contact the councillor?",
         "What youth programs are available during school holidays?",
         "How can I book a community hall for an event?",
         "What's the council doing about traffic congestion on Victoria Road?",
