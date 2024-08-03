@@ -159,7 +159,7 @@ with tab1:
     st.plotly_chart(fig, use_container_width=True)
 
 with tab2:
-    st.header("Grievance Tracking")
+    #st.header("Grievance Tracking")
     
     # Grievance Types
     st.subheader("Grievance Types")
