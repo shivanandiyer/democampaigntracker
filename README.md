@@ -1,6 +1,6 @@
-# Ryde Council AI Chatbot - Campaign Performance Tracker
+# Ryde Council AI Chatbot - Engagement Metrics
 
-This Streamlit app provides a dashboard for tracking the performance of the Ryde Council AI Chatbot campaign.
+This Streamlit app provides a dashboard for tracking the engagement metrics of the Ryde Council AI Chatbot.
 
 ## Features
 
