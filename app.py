@@ -6,10 +6,8 @@ import datetime
 from PIL import Image
 
 # Set page config
-st.set_page_config(layout="wide", page_title="Ryde Council AI Chatbot - User Engagement Metrics")
+st.set_page_config(layout="wide", page_title="Ryde Council Chatbot - User Engagement Metrics")
 
-# Placeholder for Ryde Council NSW logo
-#st.image("https://via.placeholder.com/200x100.png?text=Ryde+Council+Logo", width=200)
 
 logo = Image.open("assets/ryde_council_logo.png")
 st.image(logo, width=200)
